@@ -1,0 +1,9 @@
+secrets.yaml
+known_devices.yaml
+home-assistant.log
+home-assistant_v2.db
+home-assistant_v2.db-shm
+home-assistant_v2.db-wal
+.uuid
+.HA_VERSION
+OZW_Log.txt
