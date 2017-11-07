@@ -1,0 +1,34 @@
+light.gateway_light_34ce008d5809:
+  friendly_name: Bedroom Gateway Light
+
+# ENTRANCE SENSORS
+binary_sensor.door_window_sensor_158d000149aa71:
+  friendly_name: Entrance door
+  icon: mdi:door
+
+binary_sensor.motion_sensor_158d00015486df:
+  friendly_name: Entrance motion sensor
+
+#BALCONY
+sensor.temperature_158d0001a7ec81:
+  friendly_name: Temperature
+
+sensor.humidity_158d0001a7ec81:
+  friendly_name: Humidity
+  icon: mdi:water-percent
+
+#Bedroom
+sensor.temperature_158d00019d3038:
+  friendly_name: Temperature
+
+sensor.humidity_158d00019d3038:
+  friendly_name: Humidity
+  icon: mdi:water-percent
+
+binary_sensor.water_leak_sensor_158d0001d545a3:
+  friendly_name: Toilet Water Leak
+  icon: mdi:cup-water
+
+binary_sensor.water_leak_sensor_158d0001d78ab3:
+  friendly_name: Bathroom Water Leak
+  icon: mdi:cup-water

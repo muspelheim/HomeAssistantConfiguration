@@ -12,6 +12,7 @@ view_default:
     - light.gateway_light_34ce008d5809
     - group.climate_bedroom
     - group.climate_balcony
+    - group.water_leak
 
 bedroom:
   view: yes
