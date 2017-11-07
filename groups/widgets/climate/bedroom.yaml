@@ -1,0 +1,6 @@
+climate_bedroom:
+  view: no
+  name: Bedroom
+  entities:
+    - sensor.temperature_158d00019d3038
+    - sensor.humidity_158d00019d3038

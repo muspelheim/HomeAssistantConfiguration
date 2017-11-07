@@ -1,0 +1,34 @@
+#############################################################
+##
+## Home Assistant Weather Notification
+##
+#############################################################
+#
+#- alias: 'Send notification when sun rises'
+#  trigger:
+#  - platform: sun
+#    event: sunrise
+#    offset: '+00:30:00'
+#  condition:
+#  - condition: state
+#    entity_id: input_boolean.disable_morning_notification
+#    state: 'off'
+#  action:
+#  - service: notify.html5_trent_galaxys8
+#    data:
+#      message: "Good morning! Forecast: {{ states('sensor.melbourne_summary') }}, temp {{ states('sensor.weather_min') }} - {{ states('sensor.weather_max') }}°c  {{ states('sensor.melbourne_uv_forecast') }} Next line: {{ states('sensor.melbourne_forecast_line3') }} Now: {{ states('sensor.owm_temperature') }}°c {{ states('sensor.owm_condition') }}, {{ states('sensor.owm_rain') }}"
+#
+#
+#- alias: 'Send notification when sun sets'
+#  trigger:
+#  - platform: sun
+#    event: sunset
+#    offset: '+00:00:00'
+#  condition:
+#  - condition: state
+#    entity_id: input_boolean.disable_afternoon_notification
+#    state: 'off'
+#  action:
+#  - service: notify.html5_trent_galaxys8
+#    data:
+#      message: "The sun has set. Forecast: {{ states('sensor.melbourne_summary') }}, temp {{ states('sensor.weather_min') }} - {{ states('sensor.weather_max') }}°c  Now: {{ states('sensor.owm_temperature') }}°c {{ states('sensor.owm_condition') }}, {{ states('sensor.owm_rain') }}"

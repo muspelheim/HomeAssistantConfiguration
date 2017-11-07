@@ -1,0 +1,6 @@
+climate_balcony:
+  view: no
+  name: Balcony
+  entities:
+    - sensor.temperature_158d0001a7ec81
+    - sensor.humidity_158d0001a7ec81

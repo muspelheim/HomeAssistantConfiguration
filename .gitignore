@@ -6,4 +6,5 @@ home-assistant_v2.db-shm
 home-assistant_v2.db-wal
 .uuid
 .HA_VERSION
-OZW_Log.txt
+ip_bans.yaml
+ha_recorder.db

@@ -1,0 +1,57 @@
+# INCLUDING TABS
+#default_view:
+#home:
+view_default:
+  view: yes
+  icon: mdi:home
+  entities:
+    - group.presence
+    - group.bedroom
+    - group.climate
+    - group.awesome_people
+    - light.gateway_light_34ce008d5809
+    - group.climate_bedroom
+    - group.climate_balcony
+
+bedroom:
+  view: yes
+  name: Bedroom
+  entities:
+    - light.gateway_light_34ce008d5809
+    - group.climate_bedroom
+
+climate:
+  view: yes
+  name: Climate
+  entities:
+    - group.climate_balcony
+    - group.climate_bedroom
+
+awesome_people:
+  view: yes
+  name: Awesome People
+  entities:
+    - device_tracker.14dda99e0305
+    - device_tracker.087a4cb21ab2
+
+#TODO: need neew naming strategy later
+presence:
+  view: no
+  name: Presence
+  entities:
+    - binary_sensor.motion_sensor_158d00015486df
+    - binary_sensor.door_window_sensor_158d000149aa71
+
+#presence22:
+#  view: no
+#  name: Presencedgdf
+#  entities:
+#    - sensor.sunrise
+#    - sensor.solar_angle
+#
+#presence2ddd2:
+#  view: no
+#  name: dsfs
+#  entities:
+#    - sensor.template_last_motion
+

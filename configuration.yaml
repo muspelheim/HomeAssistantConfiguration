@@ -44,47 +44,57 @@ sensor:
     unit_of_measurement: days
     scan_interval: 10800
     command: "ssl-cert-check -b -c /etc/letsencrypt/live/locallost.pro/cert.pem | awk '{ print $NF }'"
+  - platform: template
+    sensors:
+      solar_angle:
+        friendly_name: "Sun angle"
+        unit_of_measurement: 'degrees'
+        value_template: "111{{ states.sun.sun.attributes.elevation }}111"
+      template_last_motion:
+        friendly_name: 'Last Motion'
+        value_template: >
+          {%- set sensors = [states.binary_sensor.motion_sensor_158d00015486df] %}
+          {% for sensor in sensors %}
+            {% if as_timestamp(sensor.last_changed) == as_timestamp(sensors | map(attribute='last_changed') | max) %}
+              {{ sensor }}
+            {% endif %}
+          {% endfor %}
+      sunrise:
+        value_template: "11{{ states.sun.sun.attributes.next_rising }}11"
+  - platform: history_stats
+    name: Lamp ON today
+    entity_id: binary_sensor.motion_sensor_158d00015486df
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
 
 google_assistant:
   project_id: !secret google_assistant_project_id
   client_id: !secret google_assistant_client_id
   access_token: !secret google_assistant_api_key
 
-
-# Show links to resources in log and frontend
-introduction:
-
 # Enables the frontend
 frontend:
+  themes: !include_dir_merge_named themes/
 
 # Enables configuration UI
 config:
 
-http:
-  api_password: !secret http_password
-  base_url: !secret http_base_url
-
-  ssl_certificate: !secret http_ssl_cert_path
-  ssl_key: !secret http_ssl_key_path
-
+# Configuration for web interface
+http: !include deps/http.yaml
 
 # Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
 updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  # include_used_components: true
 
 # Discover some devices automatically
-discovery:
-
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
+discovery: !include deps/discovery.yaml
 
 # Enables support for tracking state changes over time
-history:
+history: !include deps/history.yaml
+
+# Enables support for tracking state changes over time
+recorder: !include deps/recorder.yaml
 
 # View all events in a logbook
 logbook:
@@ -95,10 +105,8 @@ map:
 # Track the sun
 sun:
 
-# Text to speech
-tts:
-  - platform: google
+group: !include_dir_merge_named groups/
 
-group: !include groups.yaml
-automation: !include automations.yaml
+automation: !include_dir_merge_named automations/
+
 script: !include scripts.yaml
