@@ -1,0 +1,7 @@
+#MAIN CLIMATE BLOCK
+tab_climate:
+  view: yes
+  name: Climate
+  entities:
+    - group.climate_balcony
+    - group.climate_bedroom

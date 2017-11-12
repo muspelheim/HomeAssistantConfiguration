@@ -1,0 +1,12 @@
+#default_view:
+#home:
+view_default:
+  view: yes
+  icon: mdi:home
+  entities:
+    - group.presence
+    - group.family
+    - light.gateway_light_34ce008d5809
+    - group.climate_bedroom
+    - group.climate_balcony
+    - group.water_leak

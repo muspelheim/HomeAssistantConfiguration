@@ -1,26 +1,26 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
   name: !secret home_name
-  # Location required to calculate the time the sun rises and sets
   latitude: !secret home_latitude
   longitude: !secret home_longitude
-  # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: 144
-  # metric for Metric, imperial for Imperial
   unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Minsk
   # Customization file
-  customize: !include customize.yaml
+  customize: !include deps/homeassistant/customize.yaml
 
 device_tracker:
-  - platform: tplink
-    host: 192.168.0.1
-    username: !secret tplink_router_login
-    password: !secret tplink_router_password
-    interval_seconds: 10
-    consider_home: 180
-    track_new_devices: no
+#  - platform: tplink
+#    host: 192.168.0.1
+#    username: !secret tplink_router_login
+#    password: !secret tplink_router_password
+##    interval_seconds: 600
+###    consider_home: 180
+##    track_new_devices: no
+  - platform: nmap_tracker
+    hosts: 192.168.1.1/24
+    exclude:
+     - 192.168.1.160
+     - 192.168.1.170
 
 xiaomi_aqara:
   gateways:
@@ -44,30 +44,12 @@ sensor:
     unit_of_measurement: days
     scan_interval: 10800
     command: "ssl-cert-check -b -c /etc/letsencrypt/live/locallost.pro/cert.pem | awk '{ print $NF }'"
-  - platform: template
-    sensors:
-      solar_angle:
-        friendly_name: "Sun angle"
-        unit_of_measurement: 'degrees'
-        value_template: "111{{ states.sun.sun.attributes.elevation }}111"
-      template_last_motion:
-        friendly_name: 'Last Motion'
-        value_template: >
-          {%- set sensors = [states.binary_sensor.motion_sensor_158d00015486df] %}
-          {% for sensor in sensors %}
-            {% if as_timestamp(sensor.last_changed) == as_timestamp(sensors | map(attribute='last_changed') | max) %}
-              {{ sensor }}
-            {% endif %}
-          {% endfor %}
-      sunrise:
-        value_template: "11{{ states.sun.sun.attributes.next_rising }}11"
-  - platform: history_stats
-    name: Lamp ON today
-    entity_id: binary_sensor.motion_sensor_158d00015486df
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+
+panel_iframe:
+  grafana:
+    title: 'Grafana'
+    url: !secret grafana_panel_url
+    icon: mdi:chart-areaspline
 
 google_assistant:
   project_id: !secret google_assistant_project_id
@@ -90,14 +72,14 @@ updater:
 # Discover some devices automatically
 discovery: !include deps/discovery.yaml
 
-# Enables support for tracking state changes over time
-history: !include deps/history.yaml
-
-# Enables support for tracking state changes over time
-recorder: !include deps/recorder.yaml
-
-# View all events in a logbook
-logbook:
+## Enables support for tracking state changes over time
+#history: !include deps/history.yaml
+#
+## Enables support for tracking state changes over time
+#recorder: !include deps/recorder.yaml
+#
+## View all events in a logbook
+#logbook:
 
 # Enables a map showing the location of tracked devices
 map:
@@ -105,8 +87,16 @@ map:
 # Track the sun
 sun:
 
+notify:
+  - name: Hass
+    platform: html5
+    gcm_api_key: !secret fcm_api_key
+    gcm_sender_id: !secret fcm_sender_id
+
+mqtt: !include deps/mqtt.yaml
+
 group: !include_dir_merge_named groups/
 
-automation: !include_dir_merge_named automations/
+automation: !include_dir_merge_list automations/
 
 script: !include scripts.yaml

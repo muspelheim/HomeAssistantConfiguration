@@ -1,0 +1,6 @@
+tab_bedroom:
+  view: yes
+  name: Bedroom
+  entities:
+    - light.gateway_light_34ce008d5809
+    - group.climate_bedroom

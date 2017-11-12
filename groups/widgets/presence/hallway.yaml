@@ -1,0 +1,6 @@
+presence_hallway:
+  view: no
+  name: Hallway
+  entities:
+    - binary_sensor.motion_sensor_158d00015486df
+    - binary_sensor.door_window_sensor_158d000149aa71

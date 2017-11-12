@@ -32,3 +32,22 @@ binary_sensor.water_leak_sensor_158d0001d545a3:
 binary_sensor.water_leak_sensor_158d0001d78ab3:
   friendly_name: Bathroom Water Leak
   icon: mdi:cup-water
+
+
+
+
+
+
+
+#ORDERING GROUP
+group.tab_bedroom:
+  order: 2
+
+group.view_default:
+  order: 1
+
+group.family:
+  order: 1
+
+group.presence_hallway:
+  order: 2
