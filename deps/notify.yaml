@@ -1,0 +1,4 @@
+- name: Hass
+  platform: html5
+  gcm_api_key: !secret fcm_api_key
+  gcm_sender_id: !secret fcm_sender_id

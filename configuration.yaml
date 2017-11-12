@@ -8,83 +8,56 @@ homeassistant:
   # Customization file
   customize: !include deps/homeassistant/customize.yaml
 
-#device_tracker:
 
 xiaomi_aqara:
   gateways:
     - mac:
       key: !secret xiaomi_gateway_key
 
-sensor:
-  - platform: miflora
-    mac: 'C4:7C:8D:65:C5:B7'
-    name: Murraya
-    force_update: false
-    median: 3
-    monitored_conditions:
-      - moisture
-      - light
-      - temperature
-      - conductivity
-      - battery
-  - platform: command_line
-    name: SSL cert expiry
-    unit_of_measurement: days
-    scan_interval: 10800
-    command: "ssl-cert-check -b -c /etc/letsencrypt/live/locallost.pro/cert.pem | awk '{ print $NF }'"
-
-panel_iframe:
-  grafana:
-    title: 'Grafana'
-    url: !secret grafana_panel_url
-    icon: mdi:chart-areaspline
-
 google_assistant:
   project_id: !secret google_assistant_project_id
   client_id: !secret google_assistant_client_id
   access_token: !secret google_assistant_api_key
 
+
 # Enables the frontend
 frontend:
   themes: !include_dir_merge_named themes/
 
+
 # Enables configuration UI
 config:
-
-# Configuration for web interface
-http: !include deps/http.yaml
-
 # Checks for available updates
 updater:
-
-# Discover some devices automatically
-discovery: !include deps/discovery.yaml
-
-# Enables support for tracking state changes over time
-history: !include deps/history.yaml
-
-# Enables support for tracking state changes over time
-recorder: !include deps/recorder.yaml
-
 # View all events in a logbook
 logbook:
-
 # Enables a map showing the location of tracked devices
 map:
-
 # Track the sun
 sun:
 
-notify:
-  - name: Hass
-    platform: html5
-    gcm_api_key: !secret fcm_api_key
-    gcm_sender_id: !secret fcm_sender_id
 
+# Configuration for web interface
+http: !include deps/http.yaml
+# Enables support for tracking state changes over time
+history: !include deps/history.yaml
+# Enables support for tracking state changes over time
+recorder: !include deps/recorder.yaml
+# Custom sensor configurations
+sensor: !include deps/sensor.yaml
+# Discover some devices automatically
+discovery: !include deps/discovery.yaml
+# Notifications (html5/etc)
+notify: !include deps/notify.yaml
+# MQTT private server config
 mqtt: !include deps/mqtt.yaml
-
+# Groups config
 group: !include_dir_merge_named groups/
-
+# Home automation
 automation: !include_dir_merge_list automations/
-
-script: !include scripts.yaml
+# Custom scripts
+script: !include deps/scripts.yaml
+# Sidebar panels iframe
+panel_iframe: !include deps/panel_iframe.yaml
+# Device tracker configuration
+device_tracker: !include deps/device_tracker.yaml

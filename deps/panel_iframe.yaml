@@ -1,0 +1,4 @@
+grafana:
+  title: 'Grafana'
+  url: !secret grafana_panel_url
+  icon: mdi:chart-areaspline
