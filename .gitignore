@@ -1,13 +1,8 @@
 secrets.yaml
 known_devices.yaml
 home-assistant.log
-home-assistant_v2.db
-home-assistant_v2.db-shm
-home-assistant_v2.db-wal
 .uuid
 .HA_VERSION
 ip_bans.yaml
-ha_recorder.db
-ha_recorder.db-shm
-ha_recorder.db-wal
 html5_push_registrations.conf
+db/*

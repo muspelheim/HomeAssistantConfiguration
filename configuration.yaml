@@ -60,14 +60,14 @@ updater:
 # Discover some devices automatically
 discovery: !include deps/discovery.yaml
 
-## Enables support for tracking state changes over time
-#history: !include deps/history.yaml
-#
-## Enables support for tracking state changes over time
-#recorder: !include deps/recorder.yaml
-#
-## View all events in a logbook
-#logbook:
+# Enables support for tracking state changes over time
+history: !include deps/history.yaml
+
+# Enables support for tracking state changes over time
+recorder: !include deps/recorder.yaml
+
+# View all events in a logbook
+logbook:
 
 # Enables a map showing the location of tracked devices
 map:
