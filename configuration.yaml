@@ -8,19 +8,7 @@ homeassistant:
   # Customization file
   customize: !include deps/homeassistant/customize.yaml
 
-device_tracker:
-#  - platform: tplink
-#    host: 192.168.0.1
-#    username: !secret tplink_router_login
-#    password: !secret tplink_router_password
-##    interval_seconds: 600
-###    consider_home: 180
-##    track_new_devices: no
-  - platform: nmap_tracker
-    hosts: 192.168.1.1/24
-    exclude:
-     - 192.168.1.160
-     - 192.168.1.170
+#device_tracker:
 
 xiaomi_aqara:
   gateways:
