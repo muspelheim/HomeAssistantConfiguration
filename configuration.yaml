@@ -7,6 +7,7 @@ homeassistant:
   time_zone: Europe/Minsk
   # Customization file
   customize: !include deps/homeassistant/customize.yaml
+  customize_glob: !include deps/homeassistant/custom_ui.yaml
 
 
 xiaomi_aqara:
@@ -18,6 +19,12 @@ google_assistant:
   project_id: !secret google_assistant_project_id
   client_id: !secret google_assistant_client_id
   access_token: !secret google_assistant_api_key
+
+customizer:
+  custom_ui: local
+  hide_attributes:
+    - node_id
+    - value_index
 
 
 # Enables the frontend
