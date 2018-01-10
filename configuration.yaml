@@ -7,6 +7,7 @@ homeassistant:
   time_zone: Europe/Minsk
   # Customization file
   customize: !include deps/homeassistant/customize.yaml
+  customize_glob: !include deps/homeassistant/custom_ui.yaml
 
 
 xiaomi_aqara:
@@ -17,13 +18,58 @@ xiaomi_aqara:
 google_assistant:
   project_id: !secret google_assistant_project_id
   client_id: !secret google_assistant_client_id
-  access_token: !secret google_assistant_api_key
+  access_token: !secret google_assistant_access_token
+  api_key: !secret google_assistant_api_key
 
+customizer:
+  custom_ui: local
+  hide_attributes:
+    - node_id
+    - value_index
+
+#{
+#  "entity_id": "media_player.tts_bluetooth_speaker",
+#"message": "hello"
+#}
+
+media_player:
+  - platform: tts_bluetooth_speaker
+    name: SL-1000s #entity id is media_player.sl1000s
+    address: C9:20:4C:20:5C:C4
+    volume: 1
+  - platform: mpd
+    host: 127.0.0.1
+
+light:
+  - platform: yeelight
+    devices:
+      192.168.0.210:
+        name: kitchen_bulb_1
+        transition: 1000
+        use_music_mode: True
+      192.168.0.211:
+        name: kitchen_bulb_2
+        transition: 1000
+        use_music_mode: True
+      192.168.0.212:
+        name: hallway_bulb_1
+        transition: 1000
+        use_music_mode: True
 
 # Enables the frontend
 frontend:
+  javascript_version: latest
   themes: !include_dir_merge_named themes/
+  extra_html_url:
+    - /local/custom_ui/state-card-custom-ui.html
+  extra_html_url_es5:
+    - /local/custom_ui/state-card-custom-ui-es5.html
 
+
+logger:
+  default: debug
+  logs:
+    homeassistant.components.dialogflow: debug
 
 # Enables configuration UI
 config:
@@ -36,7 +82,93 @@ map:
 # Track the sun
 sun:
 
+#text to speech
+tts:
+  - platform: google
+    language: 'ru'
+# Enable dialogflow integration
+dialogflow:
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+  intents:
+    TemperatureAtHome:
+      - Какая температура дома
+      - Какая температура дома?
+      - Дай сводку по климату дома
 
+intent_script:
+  #Question is: температура {{ area }}
+  #Question is: Какая температура {{ area }}?
+  #Question is: Какая температура {{ area }}
+  #Handled intent TemperatureAtHome
+  #Passed parameter from DialogFlow: area
+  #Hardcoded areas: комната, на балконе, дома
+  TemperatureAtHome:
+    speech:
+      text: >
+        {%- if area == 'дома' -%}
+          Температура: {{ states('sensor.temperature_158d00019d3038') }} градусов {{ area }}
+        {%- elif area == 'на балконе' -%}
+          Температура: {{ states('sensor.temperature_158d0001a7ec81') }} градусов {{ area }}
+        {%- elif area == 'home' -%}
+          Temperature: {{ states('sensor.temperature_158d00019d3038') }} degrees at {{ area }}
+        {%- elif area == 'balcony' -%}
+          Temperature: {{ states('sensor.temperature_158d0001a7ec81') }} degrees at {{ area }}
+        {%- else -%}
+          Unknown know area {{ area }}
+        {% endif %}
+  TurnOffLight:
+    speech:
+      text: >
+        Light turned off!
+    action:
+      - service: light.turn_off
+        data_template:
+          entity_id: >
+           {{ area| join(', ') }}
+  TurnOnLight:
+    speech:
+      text: >
+        Light turned on!
+    action:
+      - service: light.turn_on
+        data_template:
+          entity_id: >
+           {{ area| join(', ') }}
+
+  #Variables values passed correctly
+  #Sample of values:
+  # {{ action }} = brightness_pct
+  # {{ value }} = 30
+  # {{ area| join(', ') }} = group.kitchen_light, group.hallway_light
+  #
+  # Expected template after build:
+  #    ChangeLightState:
+  #    speech:
+  #      text: >
+  #        sec...
+  #    action:
+  #      - service: light.turn_on
+  #        data_template:
+  #          entity_id: group.kitchen_light, group.hallway_light
+  #          brightness_pct: 30
+  # Code:
+#  ChangeLightState:
+#    speech:
+#      text: >
+#        Сейчас попробу...
+#    action:
+#      - service: light.turn_on
+#        data_template:
+#          entity_id: "{{ area| join(', ') }}"
+#          {{ action }}: {{ value }}
+
+# Custom component for handling complex intents
+# custom_components\intent_handler\intent_handler.py
+# intent_handler:
+
+#shopping list
+shopping_list:
 # Configuration for web interface
 http: !include deps/http.yaml
 # Enables support for tracking state changes over time

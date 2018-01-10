@@ -35,3 +35,5 @@
 #echo "password_file /etc/mosquitto/passwd"  | sudo tee -a /etc/mosquitto/conf.d/default.conf
 #sudo systemctl restart mosquitto
 #sudo apt-get install net-tools nmap
+
+echo "# Pair Bluetooth devices\n/home/homeassistant/.homeassistant/scripts/pair_bluetooth.sh\nexit 0" >> /etc/rc.local

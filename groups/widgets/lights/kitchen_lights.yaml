@@ -1,0 +1,7 @@
+kitchen_lights:
+  view: no
+  name: 'Kitchen Lights'
+  icon: mdi:ceiling-light
+  entities:
+    - light.kitchen_bulb_1
+    - light.kitchen_bulb_2

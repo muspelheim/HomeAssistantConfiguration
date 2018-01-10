@@ -9,6 +9,7 @@
     - temperature
     - conductivity
     - battery
+
 - platform: command_line
   name: SSL cert expiry
   unit_of_measurement: days

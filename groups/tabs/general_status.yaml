@@ -10,3 +10,4 @@ view_default:
     - group.climate_bedroom
     - group.climate_balcony
     - group.water_leak
+    - group.kitchen_lights

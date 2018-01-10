@@ -1,0 +1,6 @@
+flowers:
+  view: no
+  name: Flowers
+  entities:
+    - binary_sensor.water_leak_sensor_158d0001d545a3
+    - binary_sensor.water_leak_sensor_158d0001d78ab3

@@ -1,0 +1,6 @@
+hallway_lights:
+  view: no
+  name: 'Hallway Lights'
+  icon: mdi:ceiling-light
+  entities:
+    - light.hallway_bulb_1

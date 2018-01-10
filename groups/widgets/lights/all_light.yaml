@@ -1,0 +1,7 @@
+all_light:
+  view: no
+  name: 'Light'
+  entities:
+    - group.hallway_lights
+    - group.kitchen_lights
+    - light.gateway_light_34ce008d5809

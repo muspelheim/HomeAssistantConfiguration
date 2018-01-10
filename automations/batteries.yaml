@@ -1,0 +1,62 @@
+###############################################################################
+# Automation: Notify of Sensor's Low Battery
+###############################################################################
+- alias: Alert Low Battery Level of Sensors
+  initial_state: true
+  hide_entity: true
+  trigger:
+    platform: numeric_state
+    entity_id:
+    - sensor.upstairs_multisensor_battery
+    - sensor.downstairs_multisensor_battery
+    - sensor.single_car_garage_door_sensor_battery
+    - sensor.two_car_garage_door_sensor_battery
+    - sensor.frontroom_multisensor_battery
+    below: 10
+  condition:
+    - condition: template
+      value_template: >-
+        {%- if states.sensor.upstairs_multisensor_battery -%}
+          true
+        {%- else -%}
+          true
+        {%- endif -%}
+    - condition: template
+      value_template: >-
+        {%- if states.sensor.downstairs_multisensor_battery -%}
+          true
+        {%- else -%}
+          true
+        {%- endif -%}
+    - condition: template
+      value_template: >-
+        {%- if states.sensor.single_car_garage_door_sensor_battery -%}
+          true
+        {%- else -%}
+          true
+        {%- endif -%}
+    - condition: template
+      value_template: >-
+        {%- if states.sensor.two_car_garage_door_sensor_battery -%}
+          true
+        {%- else -%}
+          true
+        {%- endif -%}
+    - condition: template
+      value_template: >-
+        {%- if states.sensor.frontroom_multisensor_battery -%}
+          true
+        {%- else -%}
+          true
+        {%- endif -%}
+    - condition: template
+      value_template: "{{ trigger.to_state.state != 'unknown' and trigger.from_state.state != 'unknown'}}"
+    - condition: template
+      value_template: "{{ trigger.to_state.state > 0 and trigger.to_state.state < 10 }}"
+  action:
+    - service: script.notify_me
+      data_template:
+        message: "Attention! {{ trigger.to_state.attributes.friendly_name }} level is: {{ trigger.to_state.state }}%."
+    - service: script.voice_notify
+      data_template:
+        message: "Attention! {{ trigger.to_state.attributes.friendly_name }} level is: {{ trigger.to_state.state }}%."

@@ -1,0 +1,6 @@
+#
+# Prolific use of custom-ui component
+# https://github.com/andrey-git/home-assistant-custom-ui
+
+  "*.*":
+    custom_ui_state_card: state-card-custom-ui

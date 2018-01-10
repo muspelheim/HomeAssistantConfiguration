@@ -1,0 +1,35 @@
+############################################################
+# HASS Flowers Control
+############################################################
+
+############################################################
+# Set Day Mode Theme on Start
+############################################################
+
+- alias: 'Muraya: Low moisture'
+  initial_state: true
+  trigger:
+    platform: numeric_state
+    entity_id:
+      - sensor.murraya_moisture
+    below: 15
+  action:
+    - service: notify.hass
+      data_template:
+        message: "Attention! Muraya's moisture is: {{ states('sensor.murraya_moisture') }}%."
+      data:
+        message: "Attention! Muraya's moisture is: {{ states('sensor.murraya_moisture') }}%."
+
+- alias: 'Muraya: Normal moisture'
+  initial_state: true
+  trigger:
+    platform: numeric_state
+    entity_id:
+      - sensor.murraya_moisture
+    above: 30
+  action:
+    - service: notify.hass
+      data_template:
+        message: "Thank you for watering me! From Muraya with love <3"
+      data:
+        message: "Thank you for watering me! From Muraya with love <3"
