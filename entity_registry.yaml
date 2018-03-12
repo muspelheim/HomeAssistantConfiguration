@@ -1,0 +1,64 @@
+sensor.illumination_34ce008d5809:
+  name:
+  platform: xiaomi_aqara
+  unique_id: illumination34ce008d5809
+sensor.temperature_158d00019d3038:
+  name:
+  platform: xiaomi_aqara
+  unique_id: temperature158d00019d3038
+sensor.temperature_158d0001a7ec81:
+  name:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0001a7ec81
+sensor.humidity_158d00019d3038:
+  name:
+  platform: xiaomi_aqara
+  unique_id: humidity158d00019d3038
+sensor.humidity_158d0001a7ec81:
+  name:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0001a7ec81
+binary_sensor.smoke_sensor_158d0001a9399f:
+  name:
+  platform: xiaomi_aqara
+  unique_id: alarm158d0001a9399f
+binary_sensor.cube_158d0001107ca6:
+  name:
+  platform: xiaomi_aqara
+  unique_id: cube158d0001107ca6
+binary_sensor.motion_sensor_158d000121abf7:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d000121abf7
+binary_sensor.water_leak_sensor_158d0001d78ab3:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001d78ab3
+binary_sensor.motion_sensor_158d00015486df:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d00015486df
+binary_sensor.motion_sensor_158d0001235d02:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001235d02
+binary_sensor.door_window_sensor_158d000149aa71:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d000149aa71
+binary_sensor.water_leak_sensor_158d0001d545a3:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001d545a3
+light.gateway_light_34ce008d5809:
+  name:
+  platform: xiaomi_aqara
+  unique_id: rgb34ce008d5809
+media_player.bedroom_speaker:
+  name:
+  platform: cast
+  unique_id: 06ac8748-251e-955d-b8f2-e8b1c5d7b301
+media_player.kitchen_speaker:
+  name:
+  platform: cast
+  unique_id: e7056ac0-7ce5-c760-5b88-111f0ff86ae7

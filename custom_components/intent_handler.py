@@ -56,8 +56,7 @@ class ChangeLightState(intent.IntentHandler):
 
         intent_obj.hass.bus.async_fire('light.turn_on', {"entity_id": "group.kitchen_lights", "brightness_pct": "10"})
 
-
-
-        light.turn_on(intent_obj.hass, entity_id=area, brightness_pct=value)
+        kwargs = {'entity_id': area, action: value}
+        light.turn_on(intent_obj.hass, **kwargs)
 
         return response

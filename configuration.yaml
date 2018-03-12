@@ -9,7 +9,6 @@ homeassistant:
   customize: !include deps/homeassistant/customize.yaml
   customize_glob: !include deps/homeassistant/custom_ui.yaml
 
-
 xiaomi_aqara:
   gateways:
     - mac:
@@ -41,6 +40,11 @@ media_player:
     host: 127.0.0.1
 
 light:
+  - platform: flux_led
+    devices:
+      192.168.0.230:
+        name: flux_bedroom_nightlamp
+#        protocol: 'ledenet'
   - platform: yeelight
     devices:
       192.168.0.210:
@@ -65,9 +69,7 @@ frontend:
   extra_html_url_es5:
     - /local/custom_ui/state-card-custom-ui-es5.html
 
-
 logger:
-  default: debug
   logs:
     homeassistant.components.dialogflow: debug
 
@@ -81,6 +83,22 @@ logbook:
 map:
 # Track the sun
 sun:
+
+zone:
+
+  - name: !secret evgeny_work_name
+    latitude: !secret evgeny_work_latitude
+    longitude: !secret evgeny_work_longitude
+
+  - name: !secret jane_work_name
+    latitude: !secret jane_work_latitude
+    longitude: !secret jane_work_longitude
+
+  - name: !secret home_name
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    radius: 100
+    icon: mdi:account-multiple
 
 #text to speech
 tts:
@@ -102,7 +120,6 @@ intent_script:
   #Question is: Какая температура {{ area }}
   #Handled intent TemperatureAtHome
   #Passed parameter from DialogFlow: area
-  #Hardcoded areas: комната, на балконе, дома
   TemperatureAtHome:
     speech:
       text: >
@@ -117,10 +134,20 @@ intent_script:
         {%- else -%}
           Unknown know area {{ area }}
         {% endif %}
+  TurnLightOnOff:
+    speech:
+      text: >
+        Light turned {{ act }} {{ area| join(', ') }}!
+    action:
+      - service_template: light.turn_{{ act }}
+        data_template:
+          entity_id: >
+            {{ area| join(', ') }}
+
   TurnOffLight:
     speech:
       text: >
-        Light turned off!
+        Light turned off {{ area| join(', ') }}!
     action:
       - service: light.turn_off
         data_template:
@@ -129,7 +156,7 @@ intent_script:
   TurnOnLight:
     speech:
       text: >
-        Light turned on!
+        Light turned on {{ area| join(', ') }}!
     action:
       - service: light.turn_on
         data_template:
@@ -165,7 +192,7 @@ intent_script:
 
 # Custom component for handling complex intents
 # custom_components\intent_handler\intent_handler.py
-# intent_handler:
+intent_handler:
 
 #shopping list
 shopping_list:

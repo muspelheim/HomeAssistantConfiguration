@@ -6,4 +6,5 @@ home-assistant.log
 ip_bans.yaml
 html5_push_registrations.conf
 db/*
+./.shopping_list.json
 tts/*
