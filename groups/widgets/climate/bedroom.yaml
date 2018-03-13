@@ -2,5 +2,6 @@ climate_bedroom:
   view: no
   name: Bedroom
   entities:
+    - sensor.illumination_34ce008d5809
     - sensor.temperature_158d00019d3038
     - sensor.humidity_158d00019d3038

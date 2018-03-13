@@ -85,7 +85,6 @@ map:
 sun:
 
 zone:
-
   - name: !secret evgeny_work_name
     latitude: !secret evgeny_work_latitude
     longitude: !secret evgeny_work_longitude

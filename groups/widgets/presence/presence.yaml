@@ -1,0 +1,8 @@
+home_presence:
+  view: no
+  name: Home Presence
+  entities:
+    - binary_sensor.motion_sensor_158d00015486df
+    - binary_sensor.motion_sensor_158d000121abf7
+    - binary_sensor.motion_sensor_158d0001235d02
+    - binary_sensor.door_window_sensor_158d000149aa71

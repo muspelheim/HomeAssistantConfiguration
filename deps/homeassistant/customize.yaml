@@ -2,6 +2,9 @@ light.gateway_light_34ce008d5809:
   show_last_changed: true
   friendly_name: Bedroom Gateway Light
 
+device_tracker.evgeny_asus:
+  show_last_changed: true
+
 # ENTRANCE SENSORS
 binary_sensor.door_window_sensor_158d000149aa71:
   show_last_changed: true
@@ -11,6 +14,14 @@ binary_sensor.door_window_sensor_158d000149aa71:
 binary_sensor.motion_sensor_158d00015486df:
   show_last_changed: true
   friendly_name: Entrance motion sensor
+
+binary_sensor.motion_sensor_158d000121abf7:
+  show_last_changed: true
+  friendly_name: Kitchen motion sensor
+
+binary_sensor.motion_sensor_158d0001235d02:
+  show_last_changed: true
+  friendly_name: Bedroom motion sensor
 
 #BALCONY
 sensor.temperature_158d0001a7ec81:
@@ -27,6 +38,9 @@ sensor.temperature_158d00019d3038:
 sensor.humidity_158d00019d3038:
   friendly_name: Humidity
   icon: mdi:water-percent
+
+sensor.illumination_34ce008d5809:
+  friendly_name: Light Intensity
 
 binary_sensor.water_leak_sensor_158d0001d545a3:
   show_last_changed: true
@@ -51,6 +65,23 @@ light.kitchen_bulb_1:
 light.kitchen_bulb_2:
   friendly_name: Doorside lamp
   show_last_changed: true
+
+
+sensor.murraya_moisture:
+    friendly_name: Moisture
+    icon: mdi:water-percent
+sensor.murraya_light_intensity:
+    friendly_name: Light Intensity
+    icon: mdi:spotlight-beam
+sensor.murraya_temperature:
+    friendly_name: Temperature
+    icon: mdi:temperature-celsius
+sensor.murraya_conductivity:
+    friendly_name: Conductivity
+    icon: mdi:database
+sensor.murraya_battery:
+    friendly_name: Battery
+    icon: mdi:battery-charging
 
 #ORDERING GROUP
 group.tab_bedroom:
