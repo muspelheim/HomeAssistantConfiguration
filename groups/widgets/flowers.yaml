@@ -1,6 +1,6 @@
-flowers:
+flower_muraya:
   view: no
-  name: Flowers
+  name: Murraya Flower
   entities:
     - sensor.murraya_moisture
     - sensor.murraya_light_intensity

@@ -9,6 +9,21 @@ homeassistant:
   customize: !include deps/homeassistant/customize.yaml
   customize_glob: !include deps/homeassistant/custom_ui.yaml
 
+zone:
+  - name: !secret evgeny_work_name
+    latitude: !secret evgeny_work_latitude
+    longitude: !secret evgeny_work_longitude
+
+  - name: !secret jane_work_name
+    latitude: !secret jane_work_latitude
+    longitude: !secret jane_work_longitude
+
+  - name: !secret home_name
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    radius: 100
+    icon: mdi:account-multiple
+
 xiaomi_aqara:
   gateways:
     - mac:
@@ -26,40 +41,6 @@ customizer:
     - node_id
     - value_index
 
-#{
-#  "entity_id": "media_player.tts_bluetooth_speaker",
-#"message": "hello"
-#}
-
-media_player:
-  - platform: tts_bluetooth_speaker
-    name: SL-1000s #entity id is media_player.sl1000s
-    address: C9:20:4C:20:5C:C4
-    volume: 1
-  - platform: mpd
-    host: 127.0.0.1
-
-light:
-  - platform: flux_led
-    devices:
-      192.168.0.230:
-        name: flux_bedroom_nightlamp
-#        protocol: 'ledenet'
-  - platform: yeelight
-    devices:
-      192.168.0.210:
-        name: kitchen_bulb_1
-        transition: 1000
-        use_music_mode: True
-      192.168.0.211:
-        name: kitchen_bulb_2
-        transition: 1000
-        use_music_mode: True
-      192.168.0.212:
-        name: hallway_bulb_1
-        transition: 1000
-        use_music_mode: True
-
 # Enables the frontend
 frontend:
   javascript_version: latest
@@ -73,6 +54,8 @@ logger:
   logs:
     homeassistant.components.dialogflow: debug
 
+# Enable dialogflow integration
+dialogflow:
 # Enables configuration UI
 config:
 # Checks for available updates
@@ -83,118 +66,24 @@ logbook:
 map:
 # Track the sun
 sun:
-
-zone:
-  - name: !secret evgeny_work_name
-    latitude: !secret evgeny_work_latitude
-    longitude: !secret evgeny_work_longitude
-
-  - name: !secret jane_work_name
-    latitude: !secret jane_work_latitude
-    longitude: !secret jane_work_longitude
-
-  - name: !secret home_name
-    latitude: !secret home_latitude
-    longitude: !secret home_longitude
-    radius: 100
-    icon: mdi:account-multiple
-
+# Custom component for handling complex intents
+# custom_components\intent_handler\intent_handler.py
+intent_handler:
+#shopping list
+shopping_list:
 #text to speech
 tts:
   - platform: google
     language: 'ru'
-# Enable dialogflow integration
-dialogflow:
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-  intents:
-    TemperatureAtHome:
-      - Какая температура дома
-      - Какая температура дома?
-      - Дай сводку по климату дома
 
-intent_script:
-  #Question is: температура {{ area }}
-  #Question is: Какая температура {{ area }}?
-  #Question is: Какая температура {{ area }}
-  #Handled intent TemperatureAtHome
-  #Passed parameter from DialogFlow: area
-  TemperatureAtHome:
-    speech:
-      text: >
-        {%- if area == 'дома' -%}
-          Температура: {{ states('sensor.temperature_158d00019d3038') }} градусов {{ area }}
-        {%- elif area == 'на балконе' -%}
-          Температура: {{ states('sensor.temperature_158d0001a7ec81') }} градусов {{ area }}
-        {%- elif area == 'home' -%}
-          Temperature: {{ states('sensor.temperature_158d00019d3038') }} degrees at {{ area }}
-        {%- elif area == 'balcony' -%}
-          Temperature: {{ states('sensor.temperature_158d0001a7ec81') }} degrees at {{ area }}
-        {%- else -%}
-          Unknown know area {{ area }}
-        {% endif %}
-  TurnLightOnOff:
-    speech:
-      text: >
-        Light turned {{ act }} {{ area| join(', ') }}!
-    action:
-      - service_template: light.turn_{{ act }}
-        data_template:
-          entity_id: >
-            {{ area| join(', ') }}
-
-  TurnOffLight:
-    speech:
-      text: >
-        Light turned off {{ area| join(', ') }}!
-    action:
-      - service: light.turn_off
-        data_template:
-          entity_id: >
-           {{ area| join(', ') }}
-  TurnOnLight:
-    speech:
-      text: >
-        Light turned on {{ area| join(', ') }}!
-    action:
-      - service: light.turn_on
-        data_template:
-          entity_id: >
-           {{ area| join(', ') }}
-
-  #Variables values passed correctly
-  #Sample of values:
-  # {{ action }} = brightness_pct
-  # {{ value }} = 30
-  # {{ area| join(', ') }} = group.kitchen_light, group.hallway_light
-  #
-  # Expected template after build:
-  #    ChangeLightState:
-  #    speech:
-  #      text: >
-  #        sec...
-  #    action:
-  #      - service: light.turn_on
-  #        data_template:
-  #          entity_id: group.kitchen_light, group.hallway_light
-  #          brightness_pct: 30
-  # Code:
-#  ChangeLightState:
-#    speech:
-#      text: >
-#        Сейчас попробу...
-#    action:
-#      - service: light.turn_on
-#        data_template:
-#          entity_id: "{{ area| join(', ') }}"
-#          {{ action }}: {{ value }}
-
-# Custom component for handling complex intents
-# custom_components\intent_handler\intent_handler.py
-intent_handler:
-
-#shopping list
-shopping_list:
+# Configuration input component
+input_number: !include deps/input_number.yaml
+# Configuration intent component
+intent_script: !include deps/intent_script.yaml
+# Configuration for media_player component
+media_player: !include deps/media_player.yaml
+# Configuration for light component
+light: !include deps/light.yaml
 # Configuration for web interface
 http: !include deps/http.yaml
 # Enables support for tracking state changes over time
@@ -203,6 +92,8 @@ history: !include deps/history.yaml
 recorder: !include deps/recorder.yaml
 # Custom sensor configurations
 sensor: !include deps/sensor.yaml
+# Switch configurations
+switch: !include deps/switch.yaml
 # Discover some devices automatically
 discovery: !include deps/discovery.yaml
 # Notifications (html5/etc)
@@ -219,3 +110,4 @@ script: !include deps/scripts.yaml
 panel_iframe: !include deps/panel_iframe.yaml
 # Device tracker configuration
 device_tracker: !include deps/device_tracker.yaml
+

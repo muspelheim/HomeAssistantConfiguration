@@ -1,0 +1,58 @@
+###############################################################################
+# Light: LightBox LED
+###############################################################################
+- platform: flux_led
+  devices:
+    192.168.0.230:
+      name: flux_bedroom_nightlamp
+
+###############################################################################
+# Light: Yeelight color bulbs
+###############################################################################
+- platform: yeelight
+  devices:
+    192.168.0.210:
+      name: kitchen_bulb_1
+      transition: 1000
+      use_music_mode: True
+    192.168.0.211:
+      name: kitchen_bulb_2
+      transition: 1000
+      use_music_mode: True
+    192.168.0.212:
+      name: hallway_bulb_1
+      transition: 1000
+      use_music_mode: True
+
+###############################################################################
+# Light: NeoPixel Kitchen LED strip
+###############################################################################
+- platform: mqtt_json
+  name: "Kitchen Shelf LED Strip"
+  state_topic: "muspelheim/kitchen_shelf"
+  command_topic: "muspelheim/kitchen_shelf/set"
+  effect: true
+  effect_list:
+    - bpm
+    - candy cane
+    - confetti
+    - cyclon rainbow
+    - dots
+    - fire
+    - glitter
+    - juggle
+    - lightning
+    - noise
+    - police all
+    - police one
+    - rainbow
+    - rainbow with glitter
+    - ripple
+    - sinelon
+    - solid
+    - twinkle
+  brightness: true
+  flash: true
+  rgb: true
+  optimistic: false
+  qos: 0

@@ -1,0 +1,53 @@
+###############################################################################
+# Automation: Kitchen LED Strip Animation speed
+###############################################################################
+- alias: "Kitchen LED Animation Speed"
+  initial_state: True
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: input_number.kitchen_animation_speed
+  action:
+    - service: mqtt.publish
+      data_template:
+        topic: "muspelheim/kitchen_shelf/set"
+        payload: '{"transition":{{ trigger.to_state.state | int }}}'
+
+- alias: Turn on kitchen light when there is movement
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d000121abf7
+    to: 'on'
+  action:
+    - service: mqtt.publish
+      data_template:
+        topic: "muspelheim/kitchen_shelf/set"
+        payload: '{"state": "ON", "color": { "b": 177, "r": 25, "g": 139 }}'
+
+- alias: Turn off kitchen light 10 minutes after last movement
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d000121abf7
+    to: 'off'
+    for:
+      minutes: 1
+  action:
+    - service: mqtt.publish
+      data_template:
+        topic: "muspelheim/kitchen_shelf/set"
+        payload: '{"state": "OFF"}'
+
+- alias: Kitchen Cube Shake
+  trigger:
+    platform: event
+    event_type: cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d0001107ca6
+      action_type: shake_air
+  action:
+    - service: mqtt.publish
+      data_template:
+        topic: "muspelheim/kitchen_shelf/set"
+        payload_template: >
+          {%- set effectList = ['bpm', 'candy cane', 'confetti', 'cyclon rainbow', 'dots', 'fire', 'glitter', 'juggle', 'lightning', 'noise', 'police all', 'rainbow', 'rainbow with glitter', 'ripple', 'sinelon', 'twinkle'] -%}
+          {"state": "ON", "effect": "{{ effectList|random }}", "color": { "b": {{ range(1, 255) | random }}, "r": {{ range(1, 255) | random }}, "g": {{ range(1, 255) | random }} }}

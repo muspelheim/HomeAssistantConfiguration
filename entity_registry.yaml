@@ -62,3 +62,11 @@ media_player.kitchen_speaker:
   name:
   platform: cast
   unique_id: e7056ac0-7ce5-c760-5b88-111f0ff86ae7
+binary_sensor.door_window_sensor_158d00022791d5:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d00022791d5
+binary_sensor.door_window_sensor_158d0002251217:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0002251217
