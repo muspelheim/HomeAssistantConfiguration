@@ -2,9 +2,9 @@
   name: Kitchen RPI Power Strip
   host: !secret kitchen_power_strip_ip_1
   token: !secret kitchen_power_strip_token_1
-  model: chuangmi.plug.m1
+  model: qmi.powerstrip.v1
 - platform: xiaomi_miio
   name: Bedroom Table Power Strip
   host: !secret bedroom_power_strip_ip_1
   token: !secret bedroom_power_strip_token_1
-  model: chuangmi.plug.m1
+  model: qmi.powerstrip.v1
