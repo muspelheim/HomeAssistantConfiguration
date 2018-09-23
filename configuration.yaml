@@ -82,6 +82,7 @@ input_number: !include deps/input_number.yaml
 intent_script: !include deps/intent_script.yaml
 # Configuration for media_player component
 media_player: !include deps/media_player.yaml
+media_extractor:
 # Configuration for light component
 light: !include deps/light.yaml
 # Configuration for web interface

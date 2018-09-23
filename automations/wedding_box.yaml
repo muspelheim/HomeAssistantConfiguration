@@ -1,0 +1,38 @@
+############################################################
+# Wedding proposal box config
+############################################################
+- alias: 'box'
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: wedding/proposal-box/start
+    payload: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        brightness: 50
+        entity_id:
+          - light.kitchen_bulb_1
+          - light.kitchen_bulb_2
+        effect: Slowdown
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.kitchen_speaker
+        volume_level: '0.35'
+    #nice pause 5 sec + violin
+#    - service: media_extractor.play_media
+#      data_template:
+#        entity_id: media_player.kitchen_speaker
+#        media_content_id: "https://www.youtube.com/watch?v=aXYtJB7Qslk"
+#        media_content_type: "audio/youtube"
+#    #nice pause 7 sec
+#    - service: media_extractor.play_media
+#      data_template:
+#        entity_id: media_player.kitchen_speaker
+#        media_content_id: "https://www.youtube.com/watch?v=wAR4MYVcD2M"
+#        media_content_type: "audio/youtube"
+    - service: media_extractor.play_media
+      data_template:
+        entity_id: media_player.kitchen_speaker
+        media_content_id: 'https://soundcloud.com/boombox87/yiruma-love-me-piano-cover'
+        media_content_type: 'music'

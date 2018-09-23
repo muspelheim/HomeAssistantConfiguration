@@ -15,3 +15,10 @@
   unit_of_measurement: days
   scan_interval: 10800
   command: "ssl-cert-check -b -c /etc/letsencrypt/live/locallost.pro/cert.pem | awk '{ print $NF }'"
+
+- platform: mhz19
+  name: Kitchen CO2
+  serial_device: /dev/ttyS0
+  monitored_conditions:
+    - co2
+    - temperature

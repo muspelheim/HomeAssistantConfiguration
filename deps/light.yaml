@@ -24,13 +24,19 @@
       transition: 1000
       use_music_mode: True
 
+- platform: group
+  name: Kitchen Lights1
+  entities:
+    - light.kitchen_bulb_1
+    - light.kitchen_bulb_2
+
 ###############################################################################
 # Light: NeoPixel Kitchen LED strip
 ###############################################################################
 - platform: mqtt_json
-  name: "Kitchen Shelf LED Strip"
-  state_topic: "muspelheim/kitchen_shelf"
-  command_topic: "muspelheim/kitchen_shelf/set"
+  name: "Bedroom Bed LED Strip"
+  state_topic: "muspelheim/bedroom_bed"
+  command_topic: "muspelheim/bedroom_bed/set"
   effect: true
   effect_list:
     - bpm

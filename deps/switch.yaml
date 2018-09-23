@@ -1,10 +1,10 @@
 - platform: xiaomi_miio
-  name: Kitchen RPI Power Strip
+  name: Kitchen RPI Power
   host: !secret kitchen_power_strip_ip_1
   token: !secret kitchen_power_strip_token_1
-  model: qmi.powerstrip.v1
+  model: qmi.powerstrip.v1 #chuangmi.plug.m1 #qmi.powerstrip.v1
 - platform: xiaomi_miio
-  name: Bedroom Table Power Strip
+  name: Bedroom Table Power
   host: !secret bedroom_power_strip_ip_1
   token: !secret bedroom_power_strip_token_1
-  model: qmi.powerstrip.v1
+  model: qmi.powerstrip.v1 #chuangmi.plug.m1 #qmi.powerstrip.v1
