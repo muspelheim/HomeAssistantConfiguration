@@ -54,6 +54,11 @@ logger:
   logs:
     homeassistant.components.dialogflow: debug
 
+feedreader:
+  urls:
+    - https://www.home-assistant.io/atom.xml
+    - https://hasspodcast.io/feed/podcast
+
 # Enable dialogflow integration
 dialogflow:
 # Enables configuration UI
