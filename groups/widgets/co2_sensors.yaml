@@ -1,0 +1,6 @@
+co2_sensors:
+  view: no
+  name: CO2 Meter
+  entities:
+    - sensor.kitchen_co2_co2
+    - sensor.kitchen_co2_temperature

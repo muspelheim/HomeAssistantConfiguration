@@ -6,3 +6,5 @@ home_presence:
     - binary_sensor.motion_sensor_158d000121abf7
     - binary_sensor.motion_sensor_158d0001235d02
     - binary_sensor.door_window_sensor_158d000149aa71
+    - binary_sensor.door_window_sensor_158d0002251217
+    - binary_sensor.door_window_sensor_158d00022791d5

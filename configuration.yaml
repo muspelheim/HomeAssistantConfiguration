@@ -54,11 +54,8 @@ logger:
   logs:
     homeassistant.components.dialogflow: debug
 
-feedreader:
-  urls:
-    - https://www.home-assistant.io/atom.xml
-    - https://hasspodcast.io/feed/podcast
-
+# Track router
+upnp:
 # Enable dialogflow integration
 dialogflow:
 # Enables configuration UI
@@ -100,6 +97,8 @@ recorder: !include deps/recorder.yaml
 sensor: !include deps/sensor.yaml
 # Switch configurations
 switch: !include deps/switch.yaml
+# Fans configurations
+fan: !include deps/fans.yaml
 # Discover some devices automatically
 discovery: !include deps/discovery.yaml
 # Notifications (html5/etc)

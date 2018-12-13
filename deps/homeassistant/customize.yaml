@@ -23,6 +23,16 @@ binary_sensor.motion_sensor_158d0001235d02:
   show_last_changed: true
   friendly_name: Bedroom motion sensor
 
+binary_sensor.door_window_sensor_158d0002251217:
+  show_last_changed: true
+  friendly_name: Kitchen Window
+  icon: mdi:border-all
+
+binary_sensor.door_window_sensor_158d00022791d5:
+  show_last_changed: true
+  friendly_name: Balcony Window
+  icon: mdi:border-all
+
 #BALCONY
 sensor.temperature_158d0001a7ec81:
   friendly_name: Temperature
@@ -82,6 +92,15 @@ sensor.murraya_conductivity:
 sensor.murraya_battery:
     friendly_name: Battery
     icon: mdi:battery-charging
+
+
+sensor.kitchen_co2_co2:
+  friendly_name: Kitchen CO2
+  icon: mdi:gas-cylinder
+sensor.kitchen_co2_temperature:
+  friendly_name: Kitchen CO2 Temperature
+  icon: mdi:battery-charging
+
 
 #ORDERING GROUP
 group.tab_bedroom:

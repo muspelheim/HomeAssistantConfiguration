@@ -1,0 +1,3 @@
+- platform: xiaomi_miio
+  host: !secret bedroom_air_humidifier_ip_1
+  token: !secret bedroom_air_humidifier_token_1
