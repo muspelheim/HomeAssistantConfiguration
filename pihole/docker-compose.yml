@@ -1,0 +1,23 @@
+version: "3"
+services:
+  pihole:
+    image: pihole/pihole:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80/tcp"
+      - "443:443/tcp"
+    #cap_add:
+    #  - NET_ADMIN
+    # required if Pi-hole is to provide DHCP
+    # network_mode: "host"
+    environment:
+      # enter your docker host IP here
+      ServerIP: ${HOST_IP}
+      WEBPASSWORD: ${WEBPASSWORD}
+      PROXY_LOCATION: pihole
+      VIRTUAL_HOST: pihole.locallost.pro
+      VIRTUAL_PORT: 80
+    extra_hosts:
+      - 'pihole.locallost.pro:${HOST_IP}'
+    restart: always

@@ -33,7 +33,7 @@
 ###############################################################################
 # Light: NeoPixel Kitchen LED strip
 ###############################################################################
-- platform: mqtt_json
+- platform: mqtt
   name: "Bedroom Bed LED Strip"
   state_topic: "muspelheim/bedroom_bed"
   command_topic: "muspelheim/bedroom_bed/set"

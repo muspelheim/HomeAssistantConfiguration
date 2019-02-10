@@ -6,5 +6,10 @@ home-assistant.log
 ip_bans.yaml
 html5_push_registrations.conf
 db/*
+.storage
 ./.shopping_list.json
 tts/*
+.env
+traefik/acme.json
+traefik/traefik.toml
+**/__pycache__/
