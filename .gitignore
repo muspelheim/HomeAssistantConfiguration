@@ -13,3 +13,4 @@ tts/*
 traefik/acme.json
 traefik/traefik.toml
 **/__pycache__/
+home-assistant_v2.db
