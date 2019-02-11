@@ -7,7 +7,7 @@ networks:
 services:
   reverse-proxy:
     container_name: reverse-proxy
-    image: traefik
+    image: traefik:alpine
     restart: always
     command: --web --docker --docker.domain=${MAIN_DOMAIN}
     networks:
@@ -19,6 +19,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik/traefik.toml:/traefik.toml
+      - ./traefik/rules.toml:/rules.toml
       - ./traefik/acme.json:/acme.json
 
   pihole:
@@ -39,6 +40,9 @@ services:
       PROXY_LOCATION: pihole
       VIRTUAL_HOST: pihole.${MAIN_DOMAIN}
       VIRTUAL_PORT: 80
+    volumes:
+      - ./pihole:/etc/pihole/
+      - /etc/localtime:/etc/localtime:ro
     extra_hosts:
       - 'pihole.${MAIN_DOMAIN}:${HOST_IP}'
     networks:
@@ -67,15 +71,17 @@ services:
       - ./:/config
       - /etc/localtime:/etc/localtime:ro
     privileged: true
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=proxy"
-      - "traefik.backend=home-assistant"
-      - "traefik.frontend.rule=Host:ha.${MAIN_DOMAIN}"
-      - "traefik.port=${HA_PORT}"
-      - "traefik.default.protocol=http"
-      - "traefik.frontend.headers.SSLRedirect=true"
-      - "traefik.frontend.entryPoints=http,https"
+    extra_hosts:
+      - 'ha.${MAIN_DOMAIN}:${HOST_IP}'
+#    labels:
+#      - "traefik.enable=true"
+#      - "traefik.docker.network=proxy"
+#      - "traefik.backend=home-assistant"
+#      - "traefik.frontend.rule=Host:ha.${MAIN_DOMAIN}"
+#      - "traefik.port=${HA_PORT}"
+#      - "traefik.default.protocol=http"
+#      - "traefik.frontend.headers.SSLRedirect=true"
+#      - "traefik.frontend.entryPoints=http,https"
 
 #version: '3.3'
 #services:
@@ -91,14 +97,13 @@ services:
 ##    # required if Pi-hole is to provide DHCP
 ##    # network_mode: "host"
 ##    environment:
-##      # enter your docker host IP here
-##      ServerIP: ${HOST_IP}
-##      WEBPASSWORD: ${WEBPASSWORD}
-##      PROXY_LOCATION: pihole
-##      VIRTUAL_HOST: pihole.locallost.pro
-##      VIRTUAL_PORT: 80
-##    extra_hosts:
-##      - 'pihole.locallost.pro:${HOST_IP}'
+#      ServerIP: ${HOST_IP}
+#      WEBPASSWORD: ${PIHOLE_WEBPASSWORD}
+#      PROXY_LOCATION: pihole
+#      VIRTUAL_HOST: pihole.${MAIN_DOMAIN}
+#      VIRTUAL_PORT: 80
+#    extra_hosts:
+#      - 'pihole.${MAIN_DOMAIN}:${HOST_IP}'
 ##    restart: always
 #
 #  homeassistant:
@@ -107,17 +112,17 @@ services:
 #    volumes:
 #      - ./:/config
 #      - /etc/localtime:/etc/localtime:ro
-#    #ports:
-#    #  - 8123:8123
-#    #devices:
-#      #- /dev/ttyS0:/dev/ttyS0
+#    ports:
+#      - 8123:8123
+#    devices:
+#      - /dev/ttyS0:/dev/ttyS0
 #      #- /dev/ttyUSB1:/dev/ttyUSB1
 #      #- /dev/ttyACM0:/dev/ttyACM0
 #    labels:
 #      - "traefik.enable=true"
 #      - "traefik.backend=192.168.0.170"
 #      - "traefik.docker.network=traefik-public"
-#      - "traefik.frontend.rule=Host:ha.locallost.pro"
+#      - "traefik.frontend.rule=Host:ha.${MAIN_DOMAIN}"
 #      - "traefik.port=8123"
 #      - "traefik.default.protocol=https"
 #    restart: always

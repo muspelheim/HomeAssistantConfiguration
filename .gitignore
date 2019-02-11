@@ -12,5 +12,7 @@ tts/*
 .env
 traefik/acme.json
 traefik/traefik.toml
+traefik/rules.toml
 **/__pycache__/
 home-assistant_v2.db
+pihole/*

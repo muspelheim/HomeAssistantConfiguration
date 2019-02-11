@@ -28,6 +28,7 @@ xiaomi_aqara:
   gateways:
     - mac: !secret xiaomi_gateway_mac
       key: !secret xiaomi_gateway_key
+      host: !secret xiaomi_gateway_host
 
 #google_assistant:
 #  project_id: !secret google_assistant_project_id
