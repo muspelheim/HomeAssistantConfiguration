@@ -2,7 +2,7 @@
 
 docker network create --ipv6 --driver=bridge --subnet=172.20.0.0/16 --subnet=2002:ac14:0000::/48 --gateway=172.20.0.1 proxy
 
-#docker-compose pull && docker-compose down && docker-compose up -d
+#
 
 #cd ~
 #cat ~/.ssh/hassio.pub | cat >> ~/.ssh/authorized_keys
