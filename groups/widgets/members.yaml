@@ -2,4 +2,5 @@ family_members:
   view: no
   name: Members
   entities:
-    - device_tracker.evgeny_asus
+    - person.evgeny
+    - person.jane

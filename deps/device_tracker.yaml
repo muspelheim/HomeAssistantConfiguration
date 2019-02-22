@@ -1,3 +1,10 @@
 #- platform: bluetooth_tracker
-- platform: gpslogger
-  password: !secret gpslogger_password
+#- platform: gpslogger
+#  password: !secret gpslogger_password
+- platform: nmap_tracker
+  hosts:
+    - 192.168.0.60
+    - 192.168.0.50
+  new_device_defaults:
+    track_new_devices: true
+    hide_if_away: true

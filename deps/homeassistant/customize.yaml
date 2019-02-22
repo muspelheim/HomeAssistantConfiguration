@@ -2,9 +2,6 @@ light.gateway_light_34ce008d5809:
   show_last_changed: true
   friendly_name: Bedroom Gateway Light
 
-device_tracker.evgeny_asus:
-  show_last_changed: true
-
 # ENTRANCE SENSORS
 binary_sensor.door_window_sensor_158d000149aa71:
   show_last_changed: true

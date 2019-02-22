@@ -2,7 +2,7 @@
   mac: 'C4:7C:8D:65:C5:B7'
   name: Murraya
   force_update: false
-  median: 1
+  median: 3
   monitored_conditions:
     - moisture
     - light
@@ -10,9 +10,21 @@
     - conductivity
     - battery
 
+- platform: cert_expiry
+  name: SSL cert expiry
+  host: !secret http_base_url
+
 - platform: mhz19
   name: Kitchen CO2
   serial_device: /dev/ttyS0
   monitored_conditions:
     - co2
     - temperature
+
+- platform: pi_hole
+  host: !secret pi_hole_http_host
+  monitored_conditions:
+    - ads_blocked_today
+    - dns_queries_today
+    - unique_clients
+    - unique_domains

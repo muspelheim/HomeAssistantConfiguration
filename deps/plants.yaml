@@ -1,0 +1,12 @@
+Muraya:
+  sensors:
+    moisture: sensor.murraya_moisture
+    battery: sensor.murraya_battery
+    temperature: sensor.murraya_temperature
+    conductivity: sensor.murraya_conductivity
+    brightness: sensor.murraya_light_intensity
+  min_moisture: 20
+  max_moisture: 60
+  min_battery: 17
+  min_conductivity: 250
+  min_temperature: 15

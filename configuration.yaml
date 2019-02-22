@@ -36,6 +36,11 @@ xiaomi_aqara:
 #  access_token: !secret google_assistant_access_token
 #  api_key: !secret google_assistant_api_key
 
+googlehome:
+  devices:
+    - host: !secret google_home_mini_kitchen_host
+    - host: !secret google_home_mini_bathroom_host
+
 customizer:
   custom_ui: local
   hide_attributes:
@@ -54,6 +59,13 @@ frontend:
 logger:
   logs:
     homeassistant.components.dialogflow: debug
+
+# Add an RSS/Atom feed reader that polls feeds every hour
+feedreader:
+  urls:
+    - https://www.home-assistant.io/atom.xml
+    - https://github.com/blog.atom
+    - https://hasspodcast.io/feed/podcast
 
 # Track router
 upnp:
@@ -88,6 +100,8 @@ media_player: !include deps/media_player.yaml
 media_extractor:
 # Configuration for light component
 light: !include deps/light.yaml
+# Configuration for plants
+plant: !include deps/plants.yaml
 # Configuration for web interface
 http: !include deps/http.yaml
 # Enables support for tracking state changes over time
@@ -116,4 +130,7 @@ script: !include deps/scripts.yaml
 panel_iframe: !include deps/panel_iframe.yaml
 # Device tracker configuration
 device_tracker: !include deps/device_tracker.yaml
-
+# API to offer information on the system and its components
+system_health:
+# The person component allows to connect device tracker entities to one or more person entities
+person: !include deps/person.yaml

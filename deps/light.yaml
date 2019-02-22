@@ -37,7 +37,6 @@
   name: "Bedroom Bed LED Strip"
   state_topic: "muspelheim/bedroom_bed"
   command_topic: "muspelheim/bedroom_bed/set"
-  effect: true
   effect_list:
     - bpm
     - candy cane
@@ -57,8 +56,5 @@
     - sinelon
     - solid
     - twinkle
-  brightness: true
-  flash: true
-  rgb: true
   optimistic: false
   qos: 0

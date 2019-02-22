@@ -1,9 +1,9 @@
 ###############################################################################
 # Media Player: Configuration
 ###############################################################################
-- platform: tts_bluetooth_speaker
-  name: SL-1000s #entity id is media_player.sl1000s
-  address: C9:20:4C:20:5C:C4
-  volume: 1
-- platform: mpd
-  host: 127.0.0.1
+#- platform: tts_bluetooth_speaker
+#  name: SL-1000s #entity id is media_player.sl1000s
+#  address: C9:20:4C:20:5C:C4
+#  volume: 1
+#- platform: mpd
+#  host: 127.0.0.1

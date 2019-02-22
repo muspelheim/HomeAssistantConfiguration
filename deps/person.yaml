@@ -1,0 +1,7 @@
+- name: Evgeny
+  id: evgeny3f231d
+  user_id: 3f231dc928e54f3980308e8f67cbf54a
+  device_trackers:
+#    - device_tracker.192_168_0_190_a4_93_3f_de_60_b7
+#    - device_tracker.192_168_0_191_a4_93_3f_de_60_b7
+    - device_tracker.a4_93_3f_de_51_16
