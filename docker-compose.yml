@@ -33,7 +33,7 @@ services:
     ports:
       - ${HA_PORT}:${HA_PORT}
     volumes:
-      - ./:/config
+      - ./config:/config
       - /etc/localtime:/etc/localtime:ro
     privileged: true
     restart: always
