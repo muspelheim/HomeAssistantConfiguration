@@ -1,3 +1,4 @@
+---
 homeassistant:
   name: !secret home_name
   latitude: !secret home_latitude
@@ -30,7 +31,7 @@ xiaomi_aqara:
       key: !secret xiaomi_gateway_key
       host: !secret xiaomi_gateway_host
 
-#google_assistant:
+# google_assistant:
 #  project_id: !secret google_assistant_project_id
 #  client_id: !secret google_assistant_client_id
 #  access_token: !secret google_assistant_access_token
@@ -84,9 +85,9 @@ sun:
 # Custom component for handling complex intents
 # custom_components\intent_handler\intent_handler.py
 intent_handler:
-#shopping list
+# Shopping list
 shopping_list:
-#text to speech
+# Text to speech
 tts:
   - platform: google
     language: 'ru'

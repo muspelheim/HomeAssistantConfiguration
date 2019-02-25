@@ -4,7 +4,7 @@
 - platform: nmap_tracker
   hosts:
     - 192.168.0.60
-    - 192.168.0.50
+    - 192.168.0.65
   new_device_defaults:
     track_new_devices: true
     hide_if_away: true
