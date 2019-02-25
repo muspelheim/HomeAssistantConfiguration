@@ -1,4 +1,4 @@
----
+--- 
 ignore: |
   config/custom_components/
   config/ip_bans.yaml
