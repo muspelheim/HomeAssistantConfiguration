@@ -61,13 +61,6 @@ logger:
   logs:
     homeassistant.components.dialogflow: debug
 
-# Add an RSS/Atom feed reader that polls feeds every hour
-feedreader:
-  urls:
-    - https://www.home-assistant.io/atom.xml
-    - https://github.com/blog.atom
-    - https://hasspodcast.io/feed/podcast
-
 # Track router
 upnp:
 # Enable dialogflow integration

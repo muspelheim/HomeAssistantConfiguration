@@ -1,0 +1,5 @@
+battery_level_widget:
+  name: Battery Level
+  entities:
+#    - binary_sensor.cube_158d0001107ca6.battery_level
+    - sensor.murraya_battery
