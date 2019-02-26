@@ -6,7 +6,7 @@ config/.HA_VERSION
 config/ip_bans.yaml
 config/html5_push_registrations.conf
 config/db/*
-config/.storage
+config/.storage/*
 config/.shopping_list.json
 !config/.storage/lovelace
 !config/.storage/person

@@ -1,0 +1,539 @@
+{
+    "data": {
+        "config": {
+            "resources": [
+                {
+                    "type": "module",
+                    "url": "https://cdn.jsdelivr.net/gh/bramkragten/custom-ui@master/weather-card/weather-card.min.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/local/mini-graph-card/mini-graph-card-bundle.js?v=0.3.0"
+                },
+                {
+                    "type": "module",
+                    "url": "/customcards/github/custom-cards/tracker-card.js?track=true"
+                },
+                {
+                    "type": "module",
+                    "url": "/customcards/github/maykar/compact-custom-header.js?track=true"
+                }
+            ],
+            "title": "p.Korj 2a",
+            "views": [
+                {
+                    "badges": [
+                        "binary_sensor.smoke_sensor_158d0001a9399f",
+                        "binary_sensor.cube_158d0001107ca6",
+                        "device_tracker.a4_93_3f_de_51_16",
+                        "device_tracker.34_ce_00_87_25_88",
+                        "device_tracker.192_168_0_190_74_e5_43_6d_86_b3",
+                        "device_tracker.1c_15_1f_0b_9a_4d",
+                        "sensor.ssl_cert_expiry",
+                        "sun.sun"
+                    ],
+                    "cards": [
+                        {
+                            "entities": [
+                                "sensor.kitchen_co2_co2",
+                                "sensor.kitchen_co2_temperature"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "CO2 Meter",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.murraya_moisture",
+                                "sensor.murraya_light_intensity",
+                                "sensor.murraya_temperature",
+                                "sensor.murraya_conductivity",
+                                "sensor.murraya_battery"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Murraya Flower",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "binary_sensor.water_leak_sensor_158d0001d545a3",
+                                "binary_sensor.water_leak_sensor_158d0001d78ab3"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Water Leak Status",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "binary_sensor.motion_sensor_158d00015486df",
+                                "binary_sensor.door_window_sensor_158d000149aa71"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Hallway",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "person.evgeny",
+                                "person.jane"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Members",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.murraya_battery"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Battery Level",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.temperature_158d0001a7ec81",
+                                "sensor.humidity_158d0001a7ec81"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Balcony",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.illumination_34ce008d5809",
+                                "sensor.temperature_158d00019d3038",
+                                "sensor.humidity_158d00019d3038"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Bedroom",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "group.hallway_lights",
+                                "group.kitchen_lights",
+                                "light.gateway_light_34ce008d5809"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Light",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "light.kitchen_bulb_1",
+                                "light.kitchen_bulb_2"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Kitchen Lights",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "light.hallway_bulb_1"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Hallway Lights",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "binary_sensor.motion_sensor_158d00015486df",
+                                "binary_sensor.motion_sensor_158d000121abf7",
+                                "binary_sensor.motion_sensor_158d0001235d02",
+                                "binary_sensor.door_window_sensor_158d000149aa71",
+                                "binary_sensor.door_window_sensor_158d0002251217",
+                                "binary_sensor.door_window_sensor_158d00022791d5"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Home Presence",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "automation.set_night_theme_at_startup",
+                                "automation.muraya_low_moisture",
+                                "automation.muraya_normal_moisture",
+                                "automation.set_day_mode_theme_after_sunrise",
+                                "automation.set_night_mode_theme_after_sunset",
+                                "automation.box",
+                                "automation.bed_led_animation_speed",
+                                "automation.home_assistant_start",
+                                "automation.kitchen_cube_shake",
+                                "automation.set_day_theme_at_startup"
+                            ],
+                            "title": "Automation",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "fan.xiaomi_miio_device"
+                            ],
+                            "title": "Fan",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "input_number.bedroom_bed_animation_speed"
+                            ],
+                            "title": "Input number",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "light.kitchen_lights1",
+                                "light.bedroom_bed_led_strip",
+                                "light.flux_bedroom_nightlamp",
+                                "light.yeelight_rgb_34ce008cfde9",
+                                "light.yeelight_rgb_34ce008ccbdf",
+                                "light.yeelight_rgb_34ce008fda42"
+                            ],
+                            "title": "Light",
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "media_player.bedroom_speaker",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.vse_kolonki",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.all_speakers",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "plant.muraya",
+                            "type": "plant-status"
+                        },
+                        {
+                            "entities": [
+                                "switch.kitchen_rpi_power",
+                                "switch.bedroom_table_power"
+                            ],
+                            "title": "Switch",
+                            "type": "entities"
+                        }
+                    ],
+                    "panel": false,
+                    "path": "default_view",
+                    "title": "Home"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                "sensor.illumination_34ce008d5809",
+                                "sensor.temperature_158d00019d3038",
+                                "sensor.humidity_158d00019d3038"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Bedroom",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.temperature_158d0001a7ec81",
+                                "sensor.humidity_158d0001a7ec81"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Balcony",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "binary_sensor.water_leak_sensor_158d0001d545a3",
+                                "binary_sensor.water_leak_sensor_158d0001d78ab3"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Water Leak Status",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "light.kitchen_bulb_1",
+                                "light.kitchen_bulb_2"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Kitchen Lights",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "light.gateway_light_34ce008d5809"
+                            ],
+                            "title": "Light",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:home",
+                    "path": "view_default",
+                    "title": "view_default"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                "sensor.illumination_34ce008d5809",
+                                "sensor.temperature_158d00019d3038",
+                                "sensor.humidity_158d00019d3038"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Bedroom",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "light.gateway_light_34ce008d5809"
+                            ],
+                            "title": "Light",
+                            "type": "entities"
+                        }
+                    ],
+                    "path": "tab_bedroom",
+                    "title": "Bedroom"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                "sensor.temperature_158d0001a7ec81",
+                                "sensor.humidity_158d0001a7ec81"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Balcony",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.illumination_34ce008d5809",
+                                "sensor.temperature_158d00019d3038",
+                                "sensor.humidity_158d00019d3038"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Bedroom",
+                            "type": "entities"
+                        }
+                    ],
+                    "path": "tab_climate",
+                    "title": "Climate"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.pi_hole_ads_blocked_today"
+                                },
+                                {
+                                    "entity": "sensor.pi_hole_dns_queries_today"
+                                },
+                                {
+                                    "entity": "sensor.pi_hole_dns_unique_clients"
+                                },
+                                {
+                                    "entity": "sensor.pi_hole_dns_unique_domains"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Pi-Hole Stats",
+                            "type": "entities"
+                        },
+                        {
+                            "type": "custom:tracker-card"
+                        },
+                        {
+                            "entities": [
+                                "sensor.murraya_battery"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Battery Level",
+                            "type": "entities"
+                        }
+                    ],
+                    "path": "system_status",
+                    "title": "System"
+                },
+                {
+                    "background": "center / cover no-repeat url(\"/local/images/main_background.jpeg\")",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entity": "weather.dark_sky",
+                            "name": "Minsk",
+                            "type": "custom:weather-card"
+                        },
+                        {
+                            "color_thresholds": [
+                                {
+                                    "color": "#00a1ff",
+                                    "value": 0
+                                },
+                                {
+                                    "color": "#abe673",
+                                    "value": 22
+                                },
+                                {
+                                    "color": "#fe9c67",
+                                    "value": 24
+                                },
+                                {
+                                    "color": "#e0614c",
+                                    "value": 26
+                                },
+                                {
+                                    "color": "#ff0000",
+                                    "value": 30
+                                }
+                            ],
+                            "entities": [
+                                {
+                                    "entity": "sensor.temperature_158d00019d3038",
+                                    "name": "Bedroom"
+                                },
+                                {
+                                    "entity": "sensor.temperature_158d0001a7ec81",
+                                    "name": "Balcony"
+                                }
+                            ],
+                            "icon": "mdi:temperature-celsius",
+                            "name": "TEMPERATURE",
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "color_thresholds": [
+                                        {
+                                            "color": "#00a1ff",
+                                            "value": 0
+                                        },
+                                        {
+                                            "color": "#abe673",
+                                            "value": 22
+                                        },
+                                        {
+                                            "color": "#fe9c67",
+                                            "value": 24
+                                        },
+                                        {
+                                            "color": "#e0614c",
+                                            "value": 26
+                                        },
+                                        {
+                                            "color": "#ff0000",
+                                            "value": 30
+                                        }
+                                    ],
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.temperature_158d00019d3038",
+                                            "name": "Bedroom"
+                                        },
+                                        {
+                                            "entity": "sensor.temperature_158d0001a7ec81",
+                                            "name": "Balcony"
+                                        }
+                                    ],
+                                    "icon": "mdi:temperature-celsius",
+                                    "name": "TEMPERATURE",
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "color_thresholds": [
+                                        {
+                                            "color": "#ff0000",
+                                            "value": 0
+                                        },
+                                        {
+                                            "color": "#e0614c",
+                                            "value": 20
+                                        },
+                                        {
+                                            "color": "#fe9c67",
+                                            "value": 30
+                                        },
+                                        {
+                                            "color": "#abe673",
+                                            "value": 40
+                                        },
+                                        {
+                                            "color": "#83ee1d",
+                                            "value": 50
+                                        }
+                                    ],
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.humidity_158d00019d3038",
+                                            "name": "Bedroom"
+                                        },
+                                        {
+                                            "entity": "sensor.humidity_158d0001a7ec81",
+                                            "name": "Balcony"
+                                        }
+                                    ],
+                                    "icon": "mdi:water-percent",
+                                    "name": "HUMIDITY",
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "color_thresholds": [
+                                {
+                                    "color": "#ff0000",
+                                    "value": 0
+                                },
+                                {
+                                    "color": "#e0614c",
+                                    "value": 20
+                                },
+                                {
+                                    "color": "#fe9c67",
+                                    "value": 30
+                                },
+                                {
+                                    "color": "#abe673",
+                                    "value": 40
+                                },
+                                {
+                                    "color": "#83ee1d",
+                                    "value": 50
+                                }
+                            ],
+                            "entities": [
+                                {
+                                    "entity": "sensor.humidity_158d00019d3038",
+                                    "name": "Bedroom"
+                                },
+                                {
+                                    "entity": "sensor.humidity_158d0001a7ec81",
+                                    "name": "Balcony"
+                                }
+                            ],
+                            "icon": "mdi:water-percent",
+                            "name": "HUMIDITY",
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "background_image": true,
+                            "clock_format": "12",
+                            "main_config": true,
+                            "type": "custom:compact-custom-header",
+                            "voice": "hide"
+                        }
+                    ],
+                    "theme": "clear",
+                    "title": "TEST"
+                }
+            ]
+        }
+    },
+    "key": "lovelace",
+    "version": 1
+}
