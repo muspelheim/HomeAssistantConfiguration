@@ -31,6 +31,10 @@ xiaomi_aqara:
       key: !secret xiaomi_gateway_key
       host: !secret xiaomi_gateway_host
 
+weather:
+  - platform: darksky
+    api_key: !secret weather_dark_sky_api_key
+
 # google_assistant:
 #  project_id: !secret google_assistant_project_id
 #  client_id: !secret google_assistant_client_id
