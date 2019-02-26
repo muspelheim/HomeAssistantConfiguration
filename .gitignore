@@ -8,6 +8,8 @@ config/html5_push_registrations.conf
 config/db/*
 config/.storage
 config/.shopping_list.json
+!config/.storage/lovelace
+!config/.storage/person
 config/tts/*
 .env
 **/__pycache__/
