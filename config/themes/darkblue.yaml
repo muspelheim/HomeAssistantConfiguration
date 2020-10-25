@@ -1,38 +1,91 @@
 darkblue:
-  primary-color: "#396FB6"
-  light-primary-color: "#77a0d4"
-  dark-primary-color: "#3539ce"
-  text-primary-color: "#ffffff"
-  primary-background-color: "#37464f"
-  sidebar-text_-_background: "#3c4348"
-  paper-card-background-color: "#263137"
-  paper-card-header-color: "var(--text-primary-color)"
-  secondary-background-color: "var(--primary-background-color)"
-  primary-text-color: "var(--text-primary-color)"
-  secondary-text-color: "var(--primary-color)"
-  paper-listbox-background-color: "var(--sidebar-text_-_background)"
-  paper-toggle-button-checked-ink-color: "#A5A8AA"
-  paper-toggle-button-checked-button-color: "#A5A8AA"
-  paper-toggle-button-checked-bar-color: "#A5A8AA"
-  paper-slider-knob-color: "var(--primary-color)"
-  paper-slider-knob-start-color: "var(--primary-color)"
-  paper-slider-pin-color: "var(--primary-color)"
-  paper-slider-active-color: "var(--primary-color)"
-  paper-slider-secondary-color: "var(--light-primary-color)"
-  paper-slider-container-color: "var(--sidebar-text_-_background)"
-  paper-progress-secondary-color: "var(--sidebar-text_-_background)"
-  paper-item-selected_-_background-color: "var(--primary-color)"
-  paper-item-icon_-_color: "#ffffff"
-  paper-item-icon-color: "#ffffff"
-  paper-item-icon-active-color: "var(--primary-color)"
-  paper-grey-50: "var(--sidebar-text_-_background)"
-  paper-grey-200: "var(--primary-background-color)"
-  label-badge-background-color: "var(--sidebar-text_-_background)"
-  label-badge-text-color: "var(--text-primary-color)"
-  label-badge-red: "var(--primary-color)"
-  label-badge-blue: "var(--light-primary-color)"
-  label-badge-green: "var(--dark-primary-color)"
-  label-badge-yellow: "var(--text-primary-color)"
-  label-badge-grey: "var(--paper-grey-500)"
-  table-row-background-color: "var(--paper-card-background-color)"
-  table-row-alternative-background-color: "var(--sidebar-text_-_background)"
+  # Background image
+  lovelace-background: 'url("/local/triangles.jpg") #191f2b no-repeat fixed top left'
+
+  #Header
+  app-header-background-color: "#202937"
+  app-header-text-color: "#02a9f4"
+
+  #Fonts
+  primary-font-family: 'ProximaNova-Regular,Raleway,Roboto,sans-serif'
+  paper-font-common-base_-_font-family: "var(--primary-font-family)"
+  paper-font-common-code_-_font-family: "var(--primary-font-family)"
+  paper-font-body1_-_font-family: "var(--primary-font-family)"
+  paper-font-subhead_-_font-family: "var(--primary-font-family)"
+  paper-font-headline_-_font-family: "var(--primary-font-family)"
+  paper-font-caption_-_font-family: "var(--primary-font-family)"
+  paper-font-title_-_font-family: "var(--primary-font-family)"
+  ha-card-header-font-family: "var(--primary-font-family)"
+
+
+  # Main Interface Colors
+  primary-color: "#ffc107"
+  light-primary-color: var(--primary-color)
+  primary-background-color: "#191f2b"
+  secondary-background-color: "#161A23"
+  divider-color: "#242A38"
+  # Text
+  primary-text-color: "#8ea1c2"
+  secondary-text-color: "#3f5477"
+  text-primary-color: "#02a9f4"
+  disabled-text-color: "#030406"  #1b2336
+
+  # Sidebar Menu
+  sidebar-icon-color: "#4a6185"
+  sidebar-text-color: '#8ea1c2'
+  sidebar-background-color: "#202937"
+  sidebar-selected-background-color: var(--primary-background-color)
+  sidebar-selected-icon-color: "#02a9f4"
+  sidebar-selected-text-color: var(--sidebar-selected-icon-color))
+  # States and Badges
+  state-icon-color: "#4a6185"
+  state-icon-active-color: "#ffc107"
+  state-icon-unavailable-color: var(--disabled-text-color)
+
+  # Sliders
+  paper-slider-knob-color: var(--switch-checked-button-color)
+  paper-slider-knob-start-color: var(--switch-unchecked-button-color)
+  paper-slider-pin-color: var(--paper-slider-knob-color)
+  paper-slider-active-color: "#0D668E"
+  paper-slider-secondary-color: var(--light-primary-color)
+  paper-slider-container-color: var(--disabled-text-color)
+  mini-media-player-overlay-color: var(--disabled-text-color)
+
+  # Labels
+  label-badge-background-color: "#202937"
+  label-badge-text-color: "#8ea1c2"
+  label-badge-red: "#FF4348"
+  label-badge-green: "#80C884"
+  label-badge-blue: "#02a9f4"
+  label-badge-yellow: "#ffc107"
+  label-badge-gray: "#6981a8"
+
+  # Cards
+  ha-card-border-radius: "6px"
+  ha-card-header-font-size: 20px
+  # ha-card-header-letter-spacing: "1.49px"
+  ha-card-box-shadow: 1px 1px 10px 0px rgba(14, 14, 22, 0.32)
+  ha-card-header-color: "#ffc107"
+  ha-card-background: "#202937"
+  card-background-color: "#1b2336"
+  paper-listbox-background-color: "#202937"
+  paper-font-button_-_text-transform: "uppercase"
+
+  #HACS
+  hcv-color-new: "#202937"
+
+  # Switches
+  switch-checked-button-color: "#02a9f4"
+  switch-checked-track-color: "#0d4e70"
+  switch-unchecked-button-color: "#2E3A4F"
+  switch-unchecked-track-color: "#020203"
+  # Toggles
+  paper-toggle-button-checked-button-color: var(--switch-checked-button-color)
+  paper-toggle-button-checked-bar-color: var(--switch-checked-track-color)
+  paper-toggle-button-unchecked-button-color: var(--switch-unchecked-button-color)
+  paper-toggle-button-unchecked-bar-color: var(--switch-unchecked-track-color)
+  # Table
+  table-row-background-color: var(--primary-background-color)
+  table-row-alternative-background-color: var(--secondary-background-color)
+  data-table-background-color: var(--primary-background-color)
+
