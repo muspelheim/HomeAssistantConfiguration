@@ -15,3 +15,4 @@ config/tts/*
 **/__pycache__/
 config/home-assistant_v2.db
 pihole/*
+.idea
