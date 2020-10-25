@@ -40,7 +40,7 @@
 - alias: Kitchen Cube Shake
   trigger:
     platform: event
-    event_type: cube_action
+    event_type: xiaomi_aqara.cube_action
     event_data:
       entity_id: binary_sensor.cube_158d0001107ca6
       action_type: shake_air
@@ -51,3 +51,16 @@
         payload_template: >
           {%- set effectList = ['bpm', 'candy cane', 'confetti', 'cyclon rainbow', 'dots', 'fire', 'glitter', 'juggle', 'noise', 'police all', 'rainbow', 'rainbow with glitter', 'sinelon', 'twinkle'] -%}
           {"state": "ON", "effect": "{{ effectList|random }}", "color": { "b": {{ range(1, 255) | random }}, "r": {{ range(1, 255) | random }}, "g": {{ range(1, 255) | random }} }}
+
+- alias: Kitchen Cube Rotate
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d0001107ca6
+      action_type: rotate
+  action:
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.bedroom_bed_animation_speed
+        value: "{{ float(states.input_number.bedroom_bed_animation_speed.state) + float(trigger.event.data['action_value']) }}"
